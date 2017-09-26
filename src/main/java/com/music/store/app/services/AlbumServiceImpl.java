@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.music.store.app.dao.IAlbumDAO;
 import com.music.store.app.dto.AlbumDTO;
-import com.music.store.app.dto.DTOManager;
 import com.music.store.app.models.Album;
+import com.music.store.app.utils.DTOManager;
 
 @Service("albumService")
 public class AlbumServiceImpl implements IAlbumService {

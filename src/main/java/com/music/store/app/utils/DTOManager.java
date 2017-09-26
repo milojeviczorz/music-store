@@ -1,4 +1,4 @@
-package com.music.store.app.dto;
+package com.music.store.app.utils;
 
 import java.util.ArrayList;
 import java.util.List;

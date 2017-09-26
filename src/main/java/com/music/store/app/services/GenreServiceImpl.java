@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.music.store.app.dao.IGenreDAO;
-import com.music.store.app.dto.DTOManager;
 import com.music.store.app.dto.GenreDTO;
 import com.music.store.app.models.Genre;
+import com.music.store.app.utils.DTOManager;
 
 @Service("genreService")
 public class GenreServiceImpl implements IGenreService {
