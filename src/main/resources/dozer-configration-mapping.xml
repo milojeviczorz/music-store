@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<mapping map-id="album">
+		<class-a>com.music.store.app.models.Album</class-a>
+		<class-b>com.music.store.app.dto.AlbumDTO</class-b>
+		<field>
+			<a>genre.name</a>
+			<b>genreName</b>
+		</field>
+		<field>
+			<a>artist.name</a>
+			<b>artistName</b>
+		</field>
+	</mapping>
+
+</mappings>

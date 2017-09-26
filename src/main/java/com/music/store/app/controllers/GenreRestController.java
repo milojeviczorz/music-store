@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.music.store.app.models.Album;
-import com.music.store.app.models.Genre;
+import com.music.store.app.dto.AlbumDTO;
+import com.music.store.app.dto.GenreDTO;
 import com.music.store.app.services.IAlbumService;
 import com.music.store.app.services.IGenreService;
 
@@ -31,27 +31,27 @@ public class GenreRestController {
 	@RequestMapping(value = "/genres", method = RequestMethod.GET)
 	public ResponseEntity<?> getAll() {
 
-		List<Genre> genres = genreService.findAll();
+		List<GenreDTO> genres = genreService.findAll();
 
 		if (genres.isEmpty()) {
 			LOG.info("[getAll] Genres list empty");
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		}
 
-		return new ResponseEntity<List<Genre>>(genres, HttpStatus.OK);
+		return new ResponseEntity<List<GenreDTO>>(genres, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/genres/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> findAlbumsByGenre(@PathVariable long id) {
 
-		List<Album> albums = albumService.findAlbumsByGenreId(id);
+		List<AlbumDTO> albums = albumService.findAlbumsByGenreId(id);
 
 		if (albums.isEmpty()) {
 			LOG.info("[findAlbumsByGenre] albums list empty");
 			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 		}
 
-		return new ResponseEntity<List<Album>>(albums, HttpStatus.OK);
+		return new ResponseEntity<List<AlbumDTO>>(albums, HttpStatus.OK);
 	}
 
 }

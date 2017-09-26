@@ -6,26 +6,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.music.store.app.dao.IGenreDAO;
+import com.music.store.app.dto.DTOManager;
+import com.music.store.app.dto.GenreDTO;
 import com.music.store.app.models.Genre;
 
 @Service("genreService")
 public class GenreServiceImpl implements IGenreService {
 
 	@Autowired
+	private DTOManager<Genre, GenreDTO> dto;
+
+	@Autowired
 	private IGenreDAO genreDAO;
 
 	@Override
-	public List<Genre> findAll() {
-		return genreDAO.findAll();
+	public List<GenreDTO> findAll() {
+		List<Genre> genre = genreDAO.findAll();
+		return dto.convertToBO(genre, GenreDTO.class);
 	}
 
 	@Override
-	public Genre getOne(long id) {
-		return genreDAO.findOne(id);
+	public GenreDTO getOne(long id) {
+		Genre genre = genreDAO.findOne(id);
+		return dto.convert(genre, GenreDTO.class);
 	}
 
 	@Override
-	public Genre findByName(String name) {
-		return genreDAO.findByName(name);
+	public GenreDTO findByName(String name) {
+		Genre genre = genreDAO.findByName(name);
+		return dto.convert(genre, GenreDTO.class);
 	}
 }

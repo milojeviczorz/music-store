@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Album {
 
@@ -26,12 +24,10 @@ public class Album {
 
 	@ManyToOne
 	@JoinColumn(name = "genre_id")
-	@JsonIgnore
 	private Genre genre;
 
 	@ManyToOne
 	@JoinColumn(name = "artist_id")
-	@JsonIgnore
 	private Artist artist;
 
 	public Album() {

@@ -2,14 +2,14 @@ package com.music.store.app.services;
 
 import java.util.List;
 
-import com.music.store.app.models.Genre;
+import com.music.store.app.dto.GenreDTO;
 
 public interface IGenreService {
 
-	List<Genre> findAll();
+	List<GenreDTO> findAll();
 
-	Genre getOne(long id);
+	GenreDTO getOne(long id);
 
-	Genre findByName(String string);
+	GenreDTO findByName(String string);
 
 }

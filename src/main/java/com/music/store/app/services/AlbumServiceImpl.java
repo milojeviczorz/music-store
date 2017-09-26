@@ -6,17 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.music.store.app.dao.IAlbumDAO;
+import com.music.store.app.dto.AlbumDTO;
+import com.music.store.app.dto.DTOManager;
 import com.music.store.app.models.Album;
 
 @Service("albumService")
 public class AlbumServiceImpl implements IAlbumService {
 
 	@Autowired
+	private DTOManager<Album, AlbumDTO> dto;
+
+	@Autowired
 	private IAlbumDAO albumDAO;
 
 	@Override
-	public List<Album> findAlbumsByGenreId(long id) {
-		return albumDAO.findAlbumsByGenreId(id);
+	public List<AlbumDTO> findAlbumsByGenreId(long id) {
+		List<Album> albums = albumDAO.findAlbumsByGenreId(id);
+		return dto.convertToBO(albums, AlbumDTO.class, "album");
 	}
 
 }

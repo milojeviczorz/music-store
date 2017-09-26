@@ -1,6 +1,7 @@
 package com.music.store.app.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -14,7 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.music.store.app.App;
-import com.music.store.app.models.Genre;
+import com.music.store.app.dto.AlbumDTO;
+import com.music.store.app.dto.GenreDTO;
+import com.music.store.app.services.IAlbumService;
 import com.music.store.app.services.IGenreService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,20 +26,38 @@ import com.music.store.app.services.IGenreService;
 @Transactional
 public class GenreDAOTest {
 
+	private static final long ID = 1L;
+
 	@Autowired
 	private IGenreService genreService;
 
+	@Autowired
+	private IAlbumService albumService;
+
 	@Test
 	public void testFindAll() {
-		List<Genre> genres = genreService.findAll();
+		List<GenreDTO> genres = genreService.findAll();
 		assertEquals(4, genres.size());
 	}
 
 	@Test
 	public void testFindByName() {
 		String name = "Rap";
-		Genre genre = genreService.findByName(name);
+		GenreDTO genre = genreService.findByName(name);
 		assertEquals(name, genre.getName());
+	}
+
+	@Test
+	public void testGetOne() {
+		GenreDTO genre = genreService.getOne(ID);
+		assertNotNull(genre);
+	}
+
+	@Test
+	public void testFindAlbumsByGenreId() {
+		List<AlbumDTO> albums = albumService.findAlbumsByGenreId(ID);
+		assertEquals(2, albums.size());
+
 	}
 
 }

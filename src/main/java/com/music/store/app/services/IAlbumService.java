@@ -2,9 +2,9 @@ package com.music.store.app.services;
 
 import java.util.List;
 
-import com.music.store.app.models.Album;
+import com.music.store.app.dto.AlbumDTO;
 
 public interface IAlbumService {
 
-	List<Album> findAlbumsByGenreId(long id);
+	List<AlbumDTO> findAlbumsByGenreId(long id);
 }
