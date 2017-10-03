@@ -8,7 +8,7 @@ public interface IGenreService {
 
 	List<GenreDTO> findAll();
 
-	GenreDTO getOne(long id);
+	GenreDTO findOne(long id);
 
 	GenreDTO findByName(String string);
 

@@ -29,10 +29,7 @@ public class DTOManager<BO, DO> {
 	}
 
 	private String getMapId(String... mapId) {
-		if (mapId != null && mapId.length > 0) {
-			return mapId[0];
-		}
-		return null;
+		return (mapId != null && mapId.length > 0) ? mapId[0] : null;
 	}
 
 }

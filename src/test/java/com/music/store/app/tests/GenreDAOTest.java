@@ -49,7 +49,7 @@ public class GenreDAOTest {
 
 	@Test
 	public void testGetOne() {
-		GenreDTO genre = genreService.getOne(ID);
+		GenreDTO genre = genreService.findOne(ID);
 		assertNotNull(genre);
 	}
 

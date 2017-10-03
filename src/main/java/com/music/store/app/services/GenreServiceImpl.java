@@ -26,7 +26,7 @@ public class GenreServiceImpl implements IGenreService {
 	}
 
 	@Override
-	public GenreDTO getOne(long id) {
+	public GenreDTO findOne(long id) {
 		Genre genre = genreDAO.findOne(id);
 		return dto.convert(genre, GenreDTO.class);
 	}
